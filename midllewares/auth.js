@@ -67,6 +67,7 @@ function parseToken(req, res) {
     try {
       const userData = jwt.verify(token, TOKEN_SECRET);
       req.user = userData;
+      res.locals.user = userData;
       return true;
     } catch (err) {
       res.clearCookie(COOKIE_NAME);

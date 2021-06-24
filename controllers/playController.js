@@ -36,4 +36,17 @@ router.post("/create", isUser(), async (req, res) => {
   }
 });
 
+router.get("/details/:id", async (req, res) => {
+  try {
+    const play = await req.storage.getPlayById(req.params.id);
+
+
+    
+    res.render("play/details", { play });
+  } catch (err) {
+    console.log(err.message);
+    res.redirect('/404')
+  }
+});
+
 module.exports = router;
