@@ -34,7 +34,11 @@ router.post(
     try {
       if (errors.length > 0) {
         //to change
-        throw new Error(Object.values(errors).map(e=>e.msg).join('\n'));
+        throw new Error(
+          Object.values(errors)
+            .map((e) => e.msg)
+            .join("\n")
+        );
       }
       await req.auth.register(req.body.username, req.body.password);
 
@@ -42,7 +46,7 @@ router.post(
     } catch (err) {
       console.log(err.message);
       const ctx = {
-        errors: err.message.split('\n'),
+        errors: err.message.split("\n"),
         userData: {
           username: req.body.username,
         },
@@ -63,9 +67,12 @@ router.post("/login", isGuest(), async (req, res) => {
     res.redirect("/"); //change
   } catch (err) {
     console.log(err.message);
-
+    let errors = err.message;
+    if (errors == "No such user" || errors == "Incorrect pasword") {
+      errors = ["Incorrect username or password"];
+    }
     const ctx = {
-      errors: [err.message],
+      errors,
       userData: {
         username: req.body.username,
       },

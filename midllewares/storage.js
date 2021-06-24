@@ -1,5 +1,10 @@
-module.exports = () => (req, res, next) => {
-    // to do change
+const playService = require("../services/playService");
 
-  req.storage = {};
+module.exports = () => (req, res, next) => {
+  // to do change
+
+  req.storage = {
+    ...playService,
+  };
+  next();
 };
