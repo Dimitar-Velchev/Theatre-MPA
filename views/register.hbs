@@ -1,6 +1,21 @@
-<form action="/auth/register" method="POST">
-<input type="text" name="username" placeholder="username">
-<input type="password" name="password" placeholder="password">
-<input type="password" name="rePass" placeholder="rePass">
-<input type="submit" value="Register">
-</form>
+<main>
+  <form action="/auth/register" method="POST">
+    <h2>Register</h2>
+    <div class="on-dark">
+      <label for="username">Username:</label>
+      <input type="text" placeholder="Steven" name="username" value="{{userData.username}}" />
+    </div>
+
+    <div class="on-dark">
+      <label for="password">Password:</label>
+      <input type="password" placeholder="********" name="password" value="" />
+    </div>
+
+    <div class="on-dark">
+      <label for="repeatPassword">Repeat Password:</label>
+      <input type="password" placeholder="********" name="rePass" value="" />
+    </div>
+
+    <button class="btn" type="submit">Register</button>
+  </form>
+</main>

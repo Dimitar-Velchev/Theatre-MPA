@@ -1,10 +1,12 @@
 const User = require("../models/User");
 
 async function createUser(username, hashedPassword) {
+    //to change later
+
   const user = new User({
     username,
     hashedPassword,
-    //to change later
+    likedPlays: [],
   });
 
   await user.save();
